@@ -17,13 +17,25 @@ class StringGenerator(object):
    db = PyntsDB.PyntsDB()    
     
    @cherrypy.expose
-   def index(self):
+   def taplist(self):
        items=self.db.get_taps()
-       loader = jinja2.FileSystemLoader('./templates/index.html')
+       loader = jinja2.FileSystemLoader('./templates/taplist.html')
        env = jinja2.Environment(loader=loader)
        template = env.get_template('')
-       
        return template.render(items=items)
+
+   @cherrypy.expose
+   def index(self):
+       return self.taplist()
+   
+   @cherrypy.expose
+   def admin(self):
+       items=self.db.get_taps()
+       loader = jinja2.FileSystemLoader('./templates/admin.html')
+       env = jinja2.Environment(loader=loader)
+       template = env.get_template('')
+       return template.render(items=items)
+
 
 
 class StringGeneratorWebService(object):
