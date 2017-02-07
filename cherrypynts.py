@@ -17,7 +17,7 @@ class StringGenerator(object):
     
    @cherrypy.expose
    def index(self):
-       rows=self.db.get_all_rows("select * from taps ORDER BY tapNumber")
+       rows=self.db.get_taps()
        print rows
        return file('index.html')
 

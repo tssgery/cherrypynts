@@ -15,6 +15,18 @@ class PyntsDB(object):
     def __init__(self):
         self._create_database();
 
+    def get_taps(self):
+        with sqlite3.connect(self.dbName) as c:
+            command="""
+            select t.tapNumber, b.name, b.abv, b.srmEst, b.ibuEst, s.name from taps as t, beers as b, beerstyles as s
+            where t.beerId = b.id and b.beerStyleId = s.id
+            """
+            r = self.get_all_rows(command)
+            print r
+            return r
+
+
+        
     # get one row (the first row)       
     def get_one_row(self, sqlcommand):
         with sqlite3.connect(self.dbName) as c:

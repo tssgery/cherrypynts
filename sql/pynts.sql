@@ -4,7 +4,7 @@ BEGIN TRANSACTION;
 
 
 CREATE TABLE IF NOT EXISTS `beerStyles` (
-	`id` int PRIMARY KEY,
+	`id`  INTEGER PRIMARY KEY AUTOINCREMENT,
 	`name` tinytext NOT NULL,
 	`catNum` tinytext NOT NULL,
 	`category` tinytext NOT NULL,
@@ -134,7 +134,7 @@ INSERT INTO `beerStyles`( name, catNum, category, ogMin, ogMax, fgMin, fgMax, ab
 
 
 CREATE TABLE IF NOT EXISTS beers (
-                `id` int PRIMARY KEY,
+                `id`  INTEGER PRIMARY KEY AUTOINCREMENT,
                 `name` text NOT NULL,
                 `beerStyleId` int(11) NOT NULL,
                 `notes` text NOT NULL,
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS beers (
 
 
 CREATE TABLE IF NOT EXISTS `config` (
-	`id` int PRIMARY KEY,
+	`id`  INTEGER PRIMARY KEY AUTOINCREMENT,
 	`configName` varchar(50) NOT NULL,
 	`configValue` longtext NOT NULL,
 	`displayName` varchar(65) NOT NULL,
@@ -180,7 +180,7 @@ INSERT INTO `config` ( configName, configValue, displayName, showOnPanel, create
 
 
 CREATE TABLE IF NOT EXISTS `kegTypes` (
-	`id` int PRIMARY KEY,
+	`id`  INTEGER PRIMARY KEY AUTOINCREMENT,
 	`displayName` text NOT NULL,
 	`maxAmount` decimal(6,2) NOT NULL,
 	`createdDate` TIMESTAMP NULL,
@@ -209,7 +209,7 @@ INSERT INTO `kegTypes` ( displayName, maxAmount, createdDate, modifiedDate ) VAL
 
 
 CREATE TABLE IF NOT EXISTS `kegs` (
-	`id` int PRIMARY KEY,
+	`id`  INTEGER PRIMARY KEY AUTOINCREMENT,
 	`label` int(11) NOT NULL,
 	`kegTypeId` int(11) NOT NULL,
 	`make` text NOT NULL,
@@ -229,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `kegs` (
 
 
 CREATE TABLE IF NOT EXISTS `taps` (
-	`id` int PRIMARY KEY,
+	`id` INTEGER PRIMARY KEY AUTOINCREMENT,
 	`beerId` int(11),
 	`tapNumber` int(11) NOT NULL,
 	FOREIGN KEY (`beerId`) REFERENCES beers(`id`) ON DELETE CASCADE
@@ -237,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `taps` (
 
 
 CREATE TABLE IF NOT EXISTS `users` (
-	`id` int PRIMARY KEY,
+	`id`  INTEGER PRIMARY KEY AUTOINCREMENT,
 	`username` varchar(65) NOT NULL,
 	`password` varchar(65) NOT NULL,
 	`name` varchar(65)  NOT NULL,
@@ -249,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 
 CREATE TABLE IF NOT EXISTS `srmRgb` (
-	`id` int PRIMARY KEY,
+	`id`  INTEGER PRIMARY KEY AUTOINCREMENT,
 	`srm` decimal(3,1) NOT NULL,
 	`rgb` varchar(12) NOT NULL,
 	`createdDate` TIMESTAMP NULL,
