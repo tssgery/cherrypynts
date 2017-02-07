@@ -19,7 +19,7 @@ class StringGenerator(object):
    @cherrypy.expose
    def index(self):
        items=self.db.get_taps()
-       loader = jinja2.FileSystemLoader('./index.html')
+       loader = jinja2.FileSystemLoader('./templates/index.html')
        env = jinja2.Environment(loader=loader)
        template = env.get_template('')
        
