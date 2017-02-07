@@ -1,31 +1,56 @@
 <!DOCTYPE html>
 <html>
- <head>
- <!--
- <link href="/static/css/style.css" rel="stylesheet">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>What's On Tap</title>    
+    
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">    
+    
+  </head>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react-dom.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
- -->
- </head>
- <body>
- <div id="generator"></div>
- <script type="text/babel" src="static/js/gen.js"></script>
- <a>Hello Eric</a>
+  <body>
+    <div class="container theme-showcase" role="main">
+      <div class="jumbotron">
+        <h1>What's On Tap</h1>
+      </div>
+    </div>
  
- <table>
- {% for item in items %}
- <TR>
-   <TD class="c1">{{item[0]}}</TD>
-   <TD class="c2">{{item[1]}}</TD>
-   <TD class="c3">{{item[2]}}</TD>
-   <TD class="c4"><SPAN>{{item[3]}}</SPAN></TD>
-   <TD class="c5"><SPAN>{{item[4]}}</SPAN></TD>
- </TR>
- {% endfor %}
- </table>
+      
+        
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Tap</th>
+            <th>Beer</th>
+            <th>ABV</th>
+            <th>SRM</th>
+            <th>IBU</th>
+          </tr>        
+        </thead>
+        <tbody>
+          {% for item in items %}
+          <tr>
+            <td>{{item[0]}}</td>
+            <td>{{item[1]}}<p>{{item[5]}}</td>
+            <td>{{item[2]}}</td>
+            <td>{{item[3]}}</td>
+            <td>{{item[4]}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 
- </body>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  
+  <script src="/static/js/bootstrap.min.js"></script>
+
+  </body>
 </html>
