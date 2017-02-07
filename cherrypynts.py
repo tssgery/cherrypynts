@@ -6,6 +6,7 @@ import time
 import sys
 
 import cherrypy
+import jinja2
 
 import PyntsDB
 
@@ -17,9 +18,12 @@ class StringGenerator(object):
     
    @cherrypy.expose
    def index(self):
-       rows=self.db.get_taps()
-       print rows
-       return file('index.html')
+       items=self.db.get_taps()
+       loader = jinja2.FileSystemLoader('./index.html')
+       env = jinja2.Environment(loader=loader)
+       template = env.get_template('')
+       
+       return template.render(items=items)
 
 
 class StringGeneratorWebService(object):
