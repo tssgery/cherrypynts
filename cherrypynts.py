@@ -11,7 +11,7 @@ import jinja2
 import PyntsDB
 
 
-class StringGenerator(object):
+class CherryPynts(object):
    
    # member variables
    db = PyntsDB.PyntsDB()    
@@ -38,10 +38,6 @@ class StringGenerator(object):
 
 
 
-class StringGeneratorWebService(object):
-    exposed = True
-
-
 
 
 if __name__ == '__main__':
@@ -63,6 +59,5 @@ if __name__ == '__main__':
 
 
 
-    webapp = StringGenerator()
-    webapp.generator = StringGeneratorWebService()
+    webapp = CherryPynts()
     cherrypy.quickstart(webapp, '/', conf)
