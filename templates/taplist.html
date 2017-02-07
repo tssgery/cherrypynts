@@ -7,7 +7,8 @@
     <title>What's On Tap</title>    
     
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">    
+    <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/static/css/rp.css">    
     
   </head>
 
@@ -34,8 +35,8 @@
         <tbody>
           {% for item in items %}
           <tr>
-            <td>{{item[0]}}</td>
-            <td>{{item[1]}}<p>{{item[5]}}</td>
+            <td class="tap-num"><span class="tapcircle">{{item[0]}}</span></td>
+            <td><h1>{{item[1]}}</h1><h2>{{item[5]}}</h2></td>
             <td>{{item[2]}}</td>
             <td>{{item[3]}}</td>
             <td>{{item[4]}}</td>
