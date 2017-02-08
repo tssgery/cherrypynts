@@ -251,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 CREATE TABLE IF NOT EXISTS `srmRgb` (
 	`id`  INTEGER PRIMARY KEY AUTOINCREMENT,
 	`srm` decimal(3,1) NOT NULL,
-	`rgb` varchar(12) NOT NULL,
+	`rgb` text NOT NULL,
 	`createdDate` TIMESTAMP NULL,
 	`modifiedDate` TIMESTAMP NULL
 );

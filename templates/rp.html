@@ -51,11 +51,11 @@
           {% for item in items %}
           <tr class="{{ loop.cycle('altrow', '') }}">
             # tap number
-            <td class="tap-num"><span class="tapcircle">{{item[0]}}</span></td>
+            <td class="tap-num"><span class="tapcircle">{{item['tap']}}</span></td>
             # srm
             <td class="srm">
               <div class="srm-container">
-                <div class="srm-indicator" style="background-color: rgb(158,86,54)"</div>
+                <div class="srm-indicator" style="background-color: rgb({{item['srmRgb']}})"</div>
                 <div class="srm-stroke"></div>
                 <!-- {{item[3]}}  -->
               </div>
@@ -64,7 +64,7 @@
             <td class="ibu">
               <div class="ibu-container">
                 <div class="ibu-indicator">
-                  <div class="ibu-full" style="height:{{item[3]}}%"></div>
+                  <div class="ibu-full" style="height:{{item['ibu']}}%"></div>
                 </div>
                 <!-- {{item[3]}}  -->
               </div>
@@ -73,10 +73,10 @@
             
                        
             # name/style
-            <td class="name"><h1>{{item[1]}}</h1><h2 class="subhead">{{item[5]}}</h2></td>
+            <td class="name"><h1>{{item['name']}}</h1><h2 class="subhead">{{item['style']}}</h2></td>
             
             # abv
-            <td class="abv"><h2>{{item[2] | float}}%</h2></td>
+            <td class="abv"><h2>{{item['abv'] | float}}%</h2></td>
 
           </tr>
           {% endfor %}

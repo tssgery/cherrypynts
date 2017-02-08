@@ -43,7 +43,7 @@ INSERT INTO `kegs` ( label, kegTypeId, make, model, serial, stampedOwner, stampe
 
 INSERT INTO `taps` ( beerId, tapNumber ) VALUES
 ( '1', '1' ),
-( '5', '2' ),
+( '6', '2' ),
 ( '8', '3' );
 
 

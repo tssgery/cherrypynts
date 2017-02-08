@@ -18,12 +18,27 @@ class PyntsDB(object):
     def get_taps(self):
         with sqlite3.connect(self.dbName) as c:
             command="""
-            select t.tapNumber, b.name, b.abv, b.srmEst, b.ibuEst, s.name from taps as t, beers as b, beerstyles as s
+            select t.tapNumber, b.name, b.abv, b.srmEst, b.ibuEst, s.name
+            from taps as t, beers as b, beerstyles as s
             where t.beerId = b.id and b.beerStyleId = s.id
             """
             r = self.get_all_rows(command)
-            print r
-            return r
+            # now that we have the results, let's put them into a list of dictionaries so they're easier to access
+            results=[]
+            for i in r:
+                d={}
+                d['tap']=i[0]
+                d['name']=i[1]
+                d['abv']=i[2]
+                d['srm']=i[3]
+                d['ibu']=i[4]
+                d['style']=i[5]
+                # get the srm rgb settings
+                ttt=self.get_one_row("select rgb from srmRgb where srm = "+str(d['srm']))
+                d['srmRgb']=ttt[0]
+                print d
+                results.append(d.copy())
+            return results
 
 
         
@@ -63,6 +78,10 @@ class PyntsDB(object):
         """
         Create the schema if it does not exist
         """
+        if os.path.isfile(self.dbName):
+            # the database already exists
+            return
+        
         with sqlite3.connect(self.dbName) as con:             
             command=open('./sql/pynts.sql', 'r').read()   
             c=con.cursor()
