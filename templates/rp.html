@@ -51,7 +51,7 @@
           {% for item in items %}
           <tr class="{{ loop.cycle('altrow', '') }}">
             # tap number
-            <td class="tap-num"><span class="tapcircle">{{item['tap']}}</span></td>
+            <td class="tap-num"><span class="tapcircle"><a href="/edittap">{{item['tap']}}</a></span></td>
             # srm
             <td class="srm">
               <div class="srm-container">
@@ -73,7 +73,7 @@
             
                        
             # name/style
-            <td class="name"><h1>{{item['name']}}</h1><h2 class="subhead">{{item['style']}}</h2></td>
+            <td class="name"><a href="/editbeer"><h1>{{item['name']}}</h1></a><h2 class="subhead">{{item['style']}}</h2></td>
             
             # abv
             <td class="abv"><h2>{{item['abv'] | float}}%</h2></td>

@@ -36,7 +36,13 @@ class CherryPynts(object):
        template = env.get_template('')
        return template.render(items=items)
 
+   @cherrypy.expose
+   def editbeer(self):
+       return self.admin()
 
+   @cherrypy.expose
+   def edittap(self):
+       return self.admin()
 
 
 
