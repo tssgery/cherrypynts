@@ -19,7 +19,7 @@ class CherryPynts(object):
    @cherrypy.expose
    def taplist(self):
        items=self.db.get_taps()
-       loader = jinja2.FileSystemLoader('./templates/taplist.html')
+       loader = jinja2.FileSystemLoader('./templates/rp.html')
        env = jinja2.Environment(loader=loader)
        template = env.get_template('')
        return template.render(items=items)
