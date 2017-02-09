@@ -91,10 +91,11 @@
        </span>
       </label>
       <div class="col-sm-10">
-       <select class="select form-control" id="select" name="select">
+       <select class="select show-tick form-control" id="select" name="select">
     	{% for style in styles %}
-		<option value="{{style['id']}}">{{style['name']}}</option>
-        {% endfor %}					  
+		<option value="{{style['id']}}" {% if beer['styleid'] == style['id'] %} selected {% endif %}>{{style['name']}}</option>
+        {% endfor %}					
+
        </select>
        <span class="help-block" id="hint_select">
         Beer style

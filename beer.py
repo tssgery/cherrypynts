@@ -8,6 +8,8 @@ import sys
 import PyntsDB
 import jinja2
 
+from pprint import pprint
+
 class beer(object):
     
     _beer={}
@@ -36,6 +38,7 @@ class beer(object):
         loader = jinja2.FileSystemLoader('./templates/listbeer.html')
         env = jinja2.Environment(loader=loader)
         template = env.get_template('')
+        pprint(self._allbeers[0][6])
         return template.render(beers=self._allbeers)
         
         

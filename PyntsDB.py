@@ -44,10 +44,10 @@ class PyntsDB(object):
     def get_beer(self, beerId):
         with sqlite3.connect(self.dbName) as c:
             command="""
-            select * 
-            from beers
-            where id = 
-            """
+            select b.name as name, b.abv as abv, b.srmEst as srmEst, b.ibuEst as ibuEst, b.notes as notes, s.name as style, b.id as id, b.beerStyleId as styleid
+            from beers as b, beerstyles as s
+            where b.beerStyleId = s.id and b.id =
+            """            
             beer = self.get_one_row_as_dict(command+str(beerId))
 
             return beer
@@ -66,9 +66,9 @@ class PyntsDB(object):
     def get_all_beers(self):
         with sqlite3.connect(self.dbName) as c:
             command="""
-            select * 
-            from beers
-            order by name
+            select b.name as name, b.abv as abv, b.srmEst as srmEst, b.ibuEst as ibuEst, b.notes as notes, s.name as style, b.id as id
+            from beers as b, beerstyles as s
+            where b.beerStyleId = s.id
             """
             beers = self.get_all_rows_as_dict(command)
 

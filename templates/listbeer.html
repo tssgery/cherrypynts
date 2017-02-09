@@ -35,8 +35,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Beers <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Add</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">List</a></li>
+            <li><a href="#">List</a></li>            
           </ul>
         </li>
 
@@ -45,7 +44,6 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Taps <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Add</a></li>
-            <li role="separator" class="divider"></li>
             <li><a href="#">List</a></li>
           </ul>
         </li>        
@@ -58,33 +56,33 @@
   
   
  
-
- 
-
-
  <div class="container-fluid">
-   <ul class="list-group">
-     {% for beer in beers %}
-	 <li class="list-group-item">
-
-	   <span class="btn-group">
+   <table class="table">
+     <caption>All Beers</caption>
+  
+     
+      <tbody>
+      {% for beer in beers %}
+      <tr>
+         <td><span class="btn-group">
          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            Action <span class="caret"></span>
          </button>
          <ul class="dropdown-menu">
            <li><a href="/editbeer?beerId={{beer['id']}}">Edit</a></li>
            <li><a href="#">Delete</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="#">Tap</a></li>           
          </ul>
-       </span>
-     {{beer['name']}}
-	 </li>
-     {% endfor %}	
-  </ul>
+       </span></td>
+         <td>{{beer['name']}}, {{beer['style']}}<small><p>{{beer['notes']}}</small></td>
+      </tr>
+      {% endfor %}
+      </tbody>
+   
+   </table>
  </div>
-
  
-      
-
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
