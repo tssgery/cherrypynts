@@ -9,6 +9,7 @@ import cherrypy
 import jinja2
 
 import PyntsDB
+import beer
 
 
 class CherryPynts(object):
@@ -37,8 +38,10 @@ class CherryPynts(object):
        return template.render(items=items)
 
    @cherrypy.expose
-   def editbeer(self):
-       return self.admin()
+   def editbeer(self, beerId):
+       b = beer.beer(beerId)
+       return b.edit()
+
 
    @cherrypy.expose
    def edittap(self):

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>What's On Tap</title>    
+    
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">    
+    
+  </head>
+
+  <body>
+    <div class="container theme-showcase" role="main">
+      <div class="jumbotron">
+        <h1>Edit Beer</h1>
+      </div>
+    </div>
+ 
+ 
+	<form id="beer-form" method="POST">
+		<input type="hidden" name="id" value="24" />
+		<input type="hidden" name="active" value="1" />
+
+		<table width="800" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="100">
+					<b>Name:<font color="red">*</font></b>
+				</td>
+				<td>
+					<input type="text" id="name" class="largebox" name="name" value="{{beer['name']}}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Style:<font color="red">*</font></b>
+				</td>
+				<td>
+					<select id='beerStyleId' name='beerStyleId' class=''>
+					{% for style in styles %}
+					  <option value="{{style['id']}}">{{style['name']}}</option>
+                    {% endfor %}					  
+					</select>				
+			    </td>
+			</tr>
+			<tr>
+				<td>
+					<b>SRM:<font color="red">*</font></b>
+				</td>
+				<td>
+					<input type="text" id="srm" class="xsmallbox" name="srm" value="{{beer['srmEst']}}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>IBU:<font color="red">*</font></b>
+				</td>
+				<td>
+					<input type="text" id="ibu" class="xsmallbox" name="ibu" value="{{beer['ibuEst']}}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>ABV:<font color="red">*</font></b>
+				</td>
+				<td>
+					<input type="text" id="abv" class="smallbox" name="abv" value="{{beer['abv']}}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Tasting<br>Notes:</b>
+				</td>
+				<td>
+					<textarea type="text" id="notes" class="text-input textarea" style="width:320px;height:80px" name="notes">{{beer['notes']}}</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input name="save" type="submit" class="btn" value="Save" />
+					<input type="button" class="btn" value="Cancel" onclick="window.location='beer_list.php'" />
+				</td>
+			</tr>								
+		</table>
+		<br />
+		<div align="right">			
+			&nbsp &nbsp 
+		</div>
+
+	</form> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+      
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  
+  <script src="/static/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

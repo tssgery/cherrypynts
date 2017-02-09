@@ -18,7 +18,7 @@ class PyntsDB(object):
     def get_taps(self):
         with sqlite3.connect(self.dbName) as c:
             command="""
-            select t.tapNumber, b.name, b.abv, b.srmEst, b.ibuEst, s.name
+            select t.tapNumber, b.name, b.abv, b.srmEst, b.ibuEst, s.name, b.id
             from taps as t, beers as b, beerstyles as s
             where t.beerId = b.id and b.beerStyleId = s.id
             """
@@ -33,6 +33,7 @@ class PyntsDB(object):
                 d['srm']=i[3]
                 d['ibu']=i[4]
                 d['style']=i[5]
+                d['beerId']=i[6]
                 # get the srm rgb settings
                 ttt=self.get_one_row("select rgb from srmRgb where srm = "+str(d['srm']))
                 d['srmRgb']=ttt[0]
@@ -40,7 +41,27 @@ class PyntsDB(object):
                 results.append(d.copy())
             return results
 
+    def get_beer(self, beerId):
+        with sqlite3.connect(self.dbName) as c:
+            command="""
+            select * 
+            from beers
+            where id = 
+            """
+            beer = self.get_one_row_as_dict(command+str(beerId))
 
+            return beer
+
+    def get_all_styles(self):
+        with sqlite3.connect(self.dbName) as c:
+            command="""
+            select * 
+            from beerstyles
+            order by name
+            """
+            styles = self.get_all_rows_as_dict(command)
+
+            return styles
         
     # get one row (the first row)       
     def get_one_row(self, sqlcommand):
@@ -48,6 +69,24 @@ class PyntsDB(object):
             r = c.execute(sqlcommand)
             return r.fetchone()
 
+    # get one row (the first row)       
+    def get_one_row_as_dict(self, sqlcommand):
+        with sqlite3.connect(self.dbName) as db:
+            db.row_factory = sqlite3.Row
+            cursor = db.cursor()
+            cursor.execute(sqlcommand)
+            row=cursor.fetchone()
+            return row
+
+    # get one row (the first row)       
+    def get_all_rows_as_dict(self, sqlcommand):
+        with sqlite3.connect(self.dbName) as db:
+            db.row_factory = sqlite3.Row
+            cursor = db.cursor()
+            cursor.execute(sqlcommand)
+            rows=cursor.fetchall()
+            return rows
+        
     # get all the rows that result from a query
     def get_all_rows(self, sqlcommand):
         with sqlite3.connect(self.dbName) as c:
