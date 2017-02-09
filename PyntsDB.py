@@ -74,7 +74,17 @@ class PyntsDB(object):
 
             return beers
 
-        
+    def get_all_taps(self):
+        with sqlite3.connect(self.dbName) as c:
+            command="""
+            select t.id as id, t.tapNumber as number, b.name as beer, b.notes as notes, s.name as style, b.id as beerId
+            from taps as t, beers as b, beerstyles as s
+            where t.beerId = b.id and b.beerStyleId = s.id
+            """
+            results = self.get_all_rows_as_dict(command)
+            return results
+
+                
     # get one row (the first row)       
     def get_one_row(self, sqlcommand):
         with sqlite3.connect(self.dbName) as c:

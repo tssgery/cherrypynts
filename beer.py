@@ -15,6 +15,7 @@ class beer(object):
     _beer={}
     _allbeers={}
     _styles={}
+    _alltaps={}
     
 
     # constructor
@@ -23,7 +24,8 @@ class beer(object):
         if beerId != 0:
           self._beer = db.get_beer(beerId)    
         self._allbeers = db.get_all_beers()
-        self._styles = db.get_all_styles()  
+        self._styles = db.get_all_styles()
+        self._alltaps = db.get_all_taps()  
         return
     
     def edit(self):
@@ -41,6 +43,11 @@ class beer(object):
         pprint(self._allbeers[0][6])
         return template.render(beers=self._allbeers)
         
-        
+    def taplist(self):
+        print "Listing all taps"
+        loader = jinja2.FileSystemLoader('./templates/listtap.html')
+        env = jinja2.Environment(loader=loader)
+        template = env.get_template('')
+        return template.render(taps=self._alltaps)        
             
             

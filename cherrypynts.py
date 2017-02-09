@@ -51,7 +51,10 @@ class CherryPynts(object):
    def edittap(self):
        return self.admin()
 
-
+   @cherrypy.expose
+   def listtap(self):
+       b = beer.beer(0)
+       return b.taplist()
 
 if __name__ == '__main__':
     conf = {

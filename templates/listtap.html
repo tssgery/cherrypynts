@@ -9,6 +9,7 @@
     
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">    
+    <link rel="stylesheet" href="/static/css/cp.css">
     
   </head>
 
@@ -58,25 +59,27 @@
  
  <div class="container-fluid">
    <table class="table">
-     <caption>Beers</caption>
-  
+     <caption>Taps</caption>
+      <thead>
+        <td></td>
+        <td align="center">Tap</td>
+        <td>Beer</td>
+      </thead>
      
       <tbody>
-      {% for beer in beers %}
+      {% for tap in taps %}
       <tr>
          <td><span class="btn-group">
          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            Action <span class="caret"></span>
          </button>
          <ul class="dropdown-menu">
-           <li><a href="/editbeer?beerId={{beer['id']}}">Edit</a></li>
-           <li><a href="#">Delete</a></li>
-           <li role="separator" class="divider"></li>
-           <li><a href="#">Tap</a></li>           
+           <li><a href="#">Edit</a></li>
+           <li><a href="#">Delete</a></li>       
          </ul>
        </span></td>
-         <td>{{beer['name']}}, {{beer['style']}}<small><p>{{beer['notes']}}</small></td>
-      </tr>
+         <td align="center"><div class="numberCircle"><span>{{tap['number']}}</span></div></td>
+         <td>{{tap['beer']}}, {{tap['style']}}<small><p>{{tap['notes']}}</td>
       {% endfor %}
       </tbody>
    
