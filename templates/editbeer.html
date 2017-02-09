@@ -1,180 +1,180 @@
 <!DOCTYPE html>
 <!-- form created with help from https://formden.com/form-builder/ -->
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>What's On Tap</title>    
-    
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">    
-    
-  </head>
 
-  <body>
-  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What's On Tap</title>
+
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">
+
+</head>
+
+<body>
+
   <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">CherryPynts</a>
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">CherryPynts</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <!-- BEERS -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Beers <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Add</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="/listbeer">List</a></li>
+            </ul>
+          </li>
+
+          <!-- TAPS -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Taps <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Add</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">List</a></li>
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+      <!-- /.navbar-collapse -->
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <!-- BEERS -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Beers <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Add</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="/listbeer">List</a></li>
-          </ul>
-        </li>
-
-        <!-- TAPS -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Taps <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Add</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">List</a></li>
-          </ul>
-        </li>        
-      </ul>
-              
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-  
-  
-  
- 
- 
+    <!-- /.container-fluid -->
+  </nav>
 
 
- <div class="container-fluid">
-  <div class="row">
-   <!-- div class="col-md-6 col-sm-12 col-xs-12" -->
-   <div class="col-md6>"
 
 
-   
-    <form class="form-horizontal" method="post">
-     <div class="form-group ">
-      <label class="control-label col-sm-2 requiredField" for="name">
-       Name
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
-      <div class="col-sm-10">
-       <input class="form-control" id="name" name="name" placeholder="name" type="text" value="{{beer['name']}}"></input>
-       <span class="help-block" id="hint_name">
-        Name of the beer
-       </span>
-      </div>
-     </div>
-     <div class="form-group ">
-      <label class="control-label col-sm-2 requiredField" for="select">
-       Style
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
-      <div class="col-sm-10">
-       <select class="select show-tick form-control" id="select" name="select">
-    	{% for style in styles %}
-		<option value="{{style['id']}}" {% if beer['styleid'] == style['id'] %} selected {% endif %}>{{style['name']}}</option>
-        {% endfor %}					
 
-       </select>
-       <span class="help-block" id="hint_select">
-        Beer style
-       </span>
-      </div>
-     </div>
-     <div class="form-group ">
-      <label class="control-label col-sm-2 requiredField" for="srm">
-       SRM
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
-      <div class="col-sm-10">
-       <input class="form-control" id="srm" name="srm" placeholder="SRM" type="text" value="{{beer['srmEst']}}"/>
-       <span class="help-block" id="hint_srm">
-        SRM color
-       </span>
-      </div>
-     </div>
-     <div class="form-group ">
-      <label class="control-label col-sm-2 requiredField" for="subject">
-       IBU
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
-      <div class="col-sm-10">
-       <input class="form-control" id="ibu" name="ibu" placeholder="IBU" type="text" value="{{beer['ibuEst']}}"/>
-       <span class="help-block" id="hint_subject">
-        Imperial bitterness units
-       </span>
-      </div>
-     </div>
-     <div class="form-group ">
-      <label class="control-label col-sm-2 requiredField" for="abv">
-       ABV
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
-      <div class="col-sm-10">
-       <input class="form-control" id="abv" name="abv" placeholder="ABV" type="text" value="{{beer['abv']}}"/>
-       <span class="help-block" id="hint_abv">
-        Alcohol by volume
-       </span>
-      </div>
-     </div>
-     <div class="form-group ">
-      <label class="control-label col-sm-2" for="notes">
-       Notes
-      </label>
-      <div class="col-sm-10">
-       <textarea class="form-control" cols="40" id="notes" name="notes" placeholder="Notes" rows="10">{{beer['notes']}}</textarea>
-       <span class="help-block" id="hint_abv">
-        Any notes about the beer
-       </span>
-      </div>
-     </div>
-     <div class="form-group">
-      <div class="col-sm-10 col-sm-offset-2">
-       <button class="btn btn-primary " name="submit" type="submit">
-        Submit
-       </button>
-      </div>
-     </div>
-    </form>
-   </div>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- div class="col-md-6 col-sm-12 col-xs-12" -->
+      <div class="col-md6>" <form class="form-horizontal" method="post">
+        <div class="form-group ">
+          <label class="control-label col-sm-2 requiredField" for="name">
+            Name
+            <span class="asteriskField">
+              *
+            </span>
+          </label>
+          <div class="col-sm-10">
+            <input class="form-control" id="name" name="name" placeholder="name" type="text" value="{{beer['name']}}"></input>
+            <span class="help-block" id="hint_name">
+              Name of the beer
+            </span>
+          </div>
+        </div>
+        <div class="form-group ">
+          <label class="control-label col-sm-2 requiredField" for="select">
+            Style
+            <span class="asteriskField">
+              *
+            </span>
+          </label>
+          <div class="col-sm-10">
+            <select class="select show-tick form-control" id="select" name="select">
+              {% for style in styles %}
+              <option value="{{style['id']}}" {% if beer['styleid'] == style['id'] %} selected {% endif %}>{{style['name']}}</option>
+              {% endfor %}
+
+            </select>
+            <span class="help-block" id="hint_select">
+              Beer style
+            </span>
+          </div>
+        </div>
+        <div class="form-group ">
+          <label class="control-label col-sm-2 requiredField" for="srm">
+            SRM
+            <span class="asteriskField">
+              *
+            </span>
+          </label>
+          <div class="col-sm-10">
+            <input class="form-control" id="srm" name="srm" placeholder="SRM" type="text" value="{{beer['srmEst']}}" />
+            <span class="help-block" id="hint_srm">
+              SRM color
+            </span>
+          </div>
+        </div>
+        <div class="form-group ">
+          <label class="control-label col-sm-2 requiredField" for="subject">
+            IBU
+            <span class="asteriskField">
+              *
+            </span>
+          </label>
+          <div class="col-sm-10">
+            <input class="form-control" id="ibu" name="ibu" placeholder="IBU" type="text" value="{{beer['ibuEst']}}" />
+            <span class="help-block" id="hint_subject">
+              Imperial bitterness units
+            </span>
+          </div>
+        </div>
+        <div class="form-group ">
+          <label class="control-label col-sm-2 requiredField" for="abv">
+            ABV
+            <span class="asteriskField">
+              *
+            </span>
+          </label>
+          <div class="col-sm-10">
+            <input class="form-control" id="abv" name="abv" placeholder="ABV" type="text" value="{{beer['abv']}}" />
+            <span class="help-block" id="hint_abv">
+              Alcohol by volume
+            </span>
+          </div>
+        </div>
+        <div class="form-group ">
+          <label class="control-label col-sm-2" for="notes">
+            Notes
+          </label>
+          <div class="col-sm-10">
+            <textarea class="form-control" cols="40" id="notes" name="notes" placeholder="Notes" rows="10">{{beer['notes']}}</textarea>
+            <span class="help-block" id="hint_abv">
+              Any notes about the beer
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <button class="btn btn-primary " name="submit" type="submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
- </div>
-
- 
-      
+</div>
 
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  
-  <script src="/static/js/bootstrap.min.js"></script>
 
-  </body>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="/static/js/bootstrap.min.js"></script>
+
+</body>
+
 </html>

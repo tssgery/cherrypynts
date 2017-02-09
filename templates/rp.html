@@ -1,94 +1,98 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>What's On Tap</title>    
-    
+    <title>What's On Tap</title>
+
     <!--
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">
-    -->
-    <link rel="stylesheet" href="/static/css/rp.css">    
-    
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css">
+-->
+    <link rel="stylesheet" href="/static/css/rp.css">
 
-  </head>
 
-  <body>
-  <div class="bodywrapper">
-  
-  	<!-- Header with Brewery Logo and Project Name -->
-    <div class="header clearfix">
-      <div class="HeaderLeft">
-        <a href="/admin"><img src="/static/img/logo.png" height="100" alt=""></a>
-      </div>
-      <div class="HeaderCenter">
-        <h1 id="HeaderTitle">What's On Tap?</h1>
-      </div>
-      <div class="HeaderRight">
- 	    <a href="http://www.raspberrypints.com"><img src="/static/img/RaspberryPints.png" height="100" alt=""></a>
-      </div>
-    </div>
-  
+</head>
 
- 
-      
+<body>
+    <div class="bodywrapper">
 
-    <div class="row">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Tap</th>
-            <th>SRM</th>
-            <th>IBU</th>
-            <th>Beer</th>
-            <th>ABV</th>
+        <!-- Header with Brewery Logo and Project Name -->
+        <div class="header clearfix">
+            <div class="HeaderLeft">
+                <a href="/admin"><img src="/static/img/logo.png" height="100" alt=""></a>
+            </div>
+            <div class="HeaderCenter">
+                <h1 id="HeaderTitle">What's On Tap?</h1>
+            </div>
+            <div class="HeaderRight">
+                <a href="http://www.raspberrypints.com"><img src="/static/img/RaspberryPints.png" height="100" alt=""></a>
+            </div>
+        </div>
 
-          </tr>        
-        </thead>
-        <tbody>
-          {% for item in items %}
-          <tr class="{{ loop.cycle('altrow', '') }}">
-            # tap number
-            <td class="tap-num"><span class="tapcircle"><a href="/edittap">{{item['tap']}}</a></span></td>
-            # srm
-            <td class="srm">
-              <div class="srm-container">
-                <div class="srm-indicator" style="background-color: rgb({{item['srmRgb']}})"</div>
-                <div class="srm-stroke"></div>
-                <!-- {{item[3]}}  -->
-              </div>
-            </td>            
-            # ibu
-            <td class="ibu">
-              <div class="ibu-container">
-                <div class="ibu-indicator">
-                  <div class="ibu-full" style="height:{{item['ibu']}}%"></div>
-                </div>
-                <!-- {{item[3]}}  -->
-              </div>
-            </td>                       
-            <!-- <td>{{item[4]}}</td> --> 
-            
-                       
-            # name/style
-            <td class="name"><a href="/editbeer?beerId={{item['beerId']}}"><h1>{{item['name']}}</h1></a><h2 class="subhead">{{item['style']}}</h2></td>
-            
-            # abv
-            <td class="abv"><h2>{{item['abv'] | float}}%</h2></td>
 
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-  </div>
-  
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  
-  <script src="/static/js/bootstrap.min.js"></script>
 
-  </body>
+
+
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tap</th>
+                        <th>SRM</th>
+                        <th>IBU</th>
+                        <th>Beer</th>
+                        <th>ABV</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr class="{{ loop.cycle('altrow', '') }}">
+                        # tap number
+                        <td class="tap-num"><span class="tapcircle"><a href="/edittap">{{item['tap']}}</a></span></td>
+                        # srm
+                        <td class="srm">
+                            <div class="srm-container">
+                                <div class="srm-indicator" style="background-color: rgb({{item['srmRgb']}})" </div>
+                                    <div class="srm-stroke"></div>
+                                    <!-- {{item[3]}}  -->
+                                </div>
+                        </td>
+                        # ibu
+                        <td class="ibu">
+                            <div class="ibu-container">
+                                <div class="ibu-indicator">
+                                    <div class="ibu-full" style="height:{{item['ibu']}}%"></div>
+                                </div>
+                                <!-- {{item[3]}}  -->
+                            </div>
+                        </td>
+                        <!-- <td>{{item[4]}}</td> -->
+
+
+                        # name/style
+                        <td class="name"><a href="/editbeer?beerId={{item['beerId']}}"><h1>{{item['name']}}</h1></a>
+                            <h2 class="subhead">{{item['style']}}</h2></td>
+
+                        # abv
+                        <td class="abv">
+                            <h2>{{item['abv'] | float}}%</h2></td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        <script src="/static/js/bootstrap.min.js"></script>
+
+</body>
+
 </html>
