@@ -62,6 +62,18 @@ class PyntsDB(object):
             styles = self.get_all_rows_as_dict(command)
 
             return styles
+
+    def get_all_beers(self):
+        with sqlite3.connect(self.dbName) as c:
+            command="""
+            select * 
+            from beers
+            order by name
+            """
+            beers = self.get_all_rows_as_dict(command)
+
+            return beers
+
         
     # get one row (the first row)       
     def get_one_row(self, sqlcommand):

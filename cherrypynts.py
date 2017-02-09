@@ -42,6 +42,10 @@ class CherryPynts(object):
        b = beer.beer(beerId)
        return b.edit()
 
+   @cherrypy.expose
+   def listbeer(self):
+       b = beer.beer(0)
+       return b.list()
 
    @cherrypy.expose
    def edittap(self):
