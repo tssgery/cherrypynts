@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- form created with help from https://formden.com/form-builder/ -->
 <html>
   <head>
     <meta charset="utf-8">
@@ -12,94 +13,159 @@
   </head>
 
   <body>
-    <div class="container theme-showcase" role="main">
-      <div class="jumbotron">
-        <h1>Edit Beer</h1>
-      </div>
+  
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">CherryPynts</a>
     </div>
- 
- 
-	<form id="beer-form" method="POST">
-		<input type="hidden" name="id" value="24" />
-		<input type="hidden" name="active" value="1" />
 
-		<table width="800" border="0" cellspacing="0" cellpadding="0">
-			<tr>
-				<td width="100">
-					<b>Name:<font color="red">*</font></b>
-				</td>
-				<td>
-					<input type="text" id="name" class="largebox" name="name" value="{{beer['name']}}" />
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>Style:<font color="red">*</font></b>
-				</td>
-				<td>
-					<select id='beerStyleId' name='beerStyleId' class=''>
-					{% for style in styles %}
-					  <option value="{{style['id']}}">{{style['name']}}</option>
-                    {% endfor %}					  
-					</select>				
-			    </td>
-			</tr>
-			<tr>
-				<td>
-					<b>SRM:<font color="red">*</font></b>
-				</td>
-				<td>
-					<input type="text" id="srm" class="xsmallbox" name="srm" value="{{beer['srmEst']}}" />
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>IBU:<font color="red">*</font></b>
-				</td>
-				<td>
-					<input type="text" id="ibu" class="xsmallbox" name="ibu" value="{{beer['ibuEst']}}" />
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>ABV:<font color="red">*</font></b>
-				</td>
-				<td>
-					<input type="text" id="abv" class="smallbox" name="abv" value="{{beer['abv']}}" />
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>Tasting<br>Notes:</b>
-				</td>
-				<td>
-					<textarea type="text" id="notes" class="text-input textarea" style="width:320px;height:80px" name="notes">{{beer['notes']}}</textarea>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input name="save" type="submit" class="btn" value="Save" />
-					<input type="button" class="btn" value="Cancel" onclick="window.location='beer_list.php'" />
-				</td>
-			</tr>								
-		</table>
-		<br />
-		<div align="right">			
-			&nbsp &nbsp 
-		</div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <!-- BEERS -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Beers <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Add</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">List</a></li>
+          </ul>
+        </li>
 
-	</form> 
+        <!-- TAPS -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Taps <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Add</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">List</a></li>
+          </ul>
+        </li>        
+      </ul>
+              
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+  
+  
+  
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+ <div class="container-fluid">
+  <div class="row">
+   <!-- div class="col-md-6 col-sm-12 col-xs-12" -->
+   <div class="col-md6>"
+
+
+   
+    <form class="form-horizontal" method="post">
+     <div class="form-group ">
+      <label class="control-label col-sm-2 requiredField" for="name">
+       Name
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <div class="col-sm-10">
+       <input class="form-control" id="name" name="name" placeholder="name" type="text" value="{{beer['name']}}"></input>
+       <span class="help-block" id="hint_name">
+        Name of the beer
+       </span>
+      </div>
+     </div>
+     <div class="form-group ">
+      <label class="control-label col-sm-2 requiredField" for="select">
+       Style
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <div class="col-sm-10">
+       <select class="select form-control" id="select" name="select">
+    	{% for style in styles %}
+		<option value="{{style['id']}}">{{style['name']}}</option>
+        {% endfor %}					  
+       </select>
+       <span class="help-block" id="hint_select">
+        Beer style
+       </span>
+      </div>
+     </div>
+     <div class="form-group ">
+      <label class="control-label col-sm-2 requiredField" for="srm">
+       SRM
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <div class="col-sm-10">
+       <input class="form-control" id="srm" name="srm" placeholder="SRM" type="text" value="{{beer['srmEst']}}"/>
+       <span class="help-block" id="hint_srm">
+        SRM color
+       </span>
+      </div>
+     </div>
+     <div class="form-group ">
+      <label class="control-label col-sm-2 requiredField" for="subject">
+       IBU
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <div class="col-sm-10">
+       <input class="form-control" id="ibu" name="ibu" placeholder="IBU" type="text" value="{{beer['ibuEst']}}"/>
+       <span class="help-block" id="hint_subject">
+        Imperial bitterness units
+       </span>
+      </div>
+     </div>
+     <div class="form-group ">
+      <label class="control-label col-sm-2 requiredField" for="abv">
+       ABV
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <div class="col-sm-10">
+       <input class="form-control" id="abv" name="abv" placeholder="ABV" type="text" value="{{beer['abv']}}"/>
+       <span class="help-block" id="hint_abv">
+        Alcohol by volume
+       </span>
+      </div>
+     </div>
+     <div class="form-group ">
+      <label class="control-label col-sm-2" for="notes">
+       Notes
+      </label>
+      <div class="col-sm-10">
+       <textarea class="form-control" cols="40" id="notes" name="notes" placeholder="Notes" rows="10">{{beer['notes']}}</textarea>
+       <span class="help-block" id="hint_abv">
+        Any notes about the beer
+       </span>
+      </div>
+     </div>
+     <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+       <button class="btn btn-primary " name="submit" type="submit">
+        Submit
+       </button>
+      </div>
+     </div>
+    </form>
+   </div>
+  </div>
+ </div>
+
  
       
 
